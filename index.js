@@ -1,8 +1,8 @@
 const CHII_API_WALLET = require('chii_wallet')
-const Link = "https://gift.truemoney.com/campaign/?v=0191d5fe17da7281880ac5417b098fd09dk";
+const Link = "https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxx";
 async function TOPUP_Wallet(code_vc) {
     try {
-        const res = await CHII_API_WALLET(code_vc, '0821015438');
+        const res = await CHII_API_WALLET(code_vc, 'เบอร์รับเงินวอเลท');
         if (res?.ok) {
             switch (res.ok) {
                 case 1001:
