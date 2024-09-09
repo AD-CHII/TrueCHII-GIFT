@@ -7,7 +7,7 @@
 + API ทรูมันนี่วอเลตซองอั่งเปา🧧
 + ระบบเปิดซองอั่งเปารับเงินเข้าเบอร์เราอัตโนมัติ
 
-                                 [![fdxrdxfr](https://img2.pic.in.th/pic/fdxrdxfr.md.png)](https://pic.in.th/image/fdxrdxfr.t30KZv)
+[![fdxrdxfr](https://img5.pic.in.th/file/secure-sv1/fdxrdxfr.md.png)](https://pic.in.th/image/fdxrdxfr.t3Ntr6)
 
 ## install modules
 + ติดตั้งโมดูล
