@@ -1,7 +1,7 @@
 
 const { EmbedBuilder } = require('discord.js');
 
-const CHII_API_WALLET = require('chii_wallet')
+const CHII_API_WALLET = require('wallet-chii')
 const Link = "https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 async function TOPUP_Wallet(code_vc) {
     try {
