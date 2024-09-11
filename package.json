@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "chii_wallet": "^1.0.3"
+    "wallet-chii": "^1.0.1"
   }
 }
