@@ -12,7 +12,7 @@
 ## install modules
 + ติดตั้งโมดูล
 ```sh
-npm i chii_wallet
+npm i wallet-chii
 ```
 ## Run Code
 + รันโค้ด Node fileName.js
@@ -25,7 +25,7 @@ Node index.js
 + Phone Number: Enter Our True Wallet Money Receiving Number📲
 
 ```js
-const CHII_API_WALLET = require('chii_wallet')
+const CHII_API_WALLET = require('wallet-chii')
 function TOPUP_Wallet(code) {
       const res = await CHII_API_WALLET(code, 'เบอร์โทร') // เบอร์โทร Number Phone
       console.log(res)
@@ -95,7 +95,7 @@ TOPUP_Wallet("https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## ตัวอย่างโค้ด Example Code
 ```js
-const CHII_API_WALLET = require('chii_wallet')
+const CHII_API_WALLET = require('wallet-chii')
 const Link_VC = "https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 async function TOPUP_Wallet(code_vc) {
     try {
@@ -160,7 +160,7 @@ TOPUP_Wallet(Link_VC);
 ```js
 const { EmbedBuilder } = require('discord.js');
 
-const CHII_API_WALLET = require('chii_wallet')
+const CHII_API_WALLET = require('wallet-chii')
 const Link = "https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 async function TOPUP_Wallet(code_vc) {
     try {
