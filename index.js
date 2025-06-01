@@ -1,4 +1,4 @@
-const CHII_API_WALLET = require('wallet-chii')
+const { CHII_API_WALLET } = require('chii-aungpao')
 const Link = "https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxx";
 async function TOPUP_Wallet(code_vc) {
     try {
