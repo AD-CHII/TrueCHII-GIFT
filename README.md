@@ -12,7 +12,7 @@
 ## install modules
 + ติดตั้งโมดูล
 ```sh
-npm i wallet-chii
+npm install
 ```
 ## Run Code
 + รันโค้ด Node fileName.js
@@ -25,7 +25,7 @@ Node index.js
 + Phone Number: Enter Our True Wallet Money Receiving Number📲
 
 ```js
-const CHII_API_WALLET = require('wallet-chii')
+const { CHII_API_WALLET } = require('./index')
 function TOPUP_Wallet(code) {
       const res = await CHII_API_WALLET(code, 'เบอร์โทร') // เบอร์โทร Number Phone
       console.log(res)
@@ -69,40 +69,40 @@ TOPUP_Wallet("https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## โค้ดหมายเลขแจ้งเตือน Notify Number Code
 -------------------------------------
-+ 1001 | ทำรายการรับเงินสำเร็จ          |
++ Success | ทำรายการรับเงินสำเร็จ          |
 -------------------------------------
 -------------------------------------
-+ 1002 | รับซองตัวเองไม่ได้             |
++ 1000 | รับซองตัวเองไม่ได้             |
 -------------------------------------
 -------------------------------------
-+ 1003 | ไม่พบเบอร์นี้ในระบบ            |
++ 1001 | ไม่พบเบอร์นี้ในระบบ            |
 -------------------------------------
 -------------------------------------
-+ 1004 | ไม่พบซองนี้ในระบบ หรือ URL ผิด |
++ 1002 | ไม่พบซองนี้ในระบบ หรือ URL ผิด |
 -------------------------------------
 -------------------------------------
-+ 1005 | มีคนรับซองอั่งเปาไปแล้ว         |
++ 1003 | มีคนรับซองอั่งเปาไปแล้ว         |
 -------------------------------------
 -------------------------------------
-+ 1006 | ไม่พบซองอั่งเปาในระบบ         |
++ 1004 | ไม่พบซองอั่งเปาในระบบ         |
 -------------------------------------
 -------------------------------------
-+ 1007 | ซองวอเลทนี้หมดอายุแล้ว        |
++ 1005 | ซองวอเลทนี้หมดอายุแล้ว        |
 -------------------------------------
 -------------------------------------
-+ 1008 | เบอร์โทรศัพท์ผู้รับเงินไม่ถูกต้อง    |
++ 1006 | เบอร์โทรศัพท์ผู้รับเงินไม่ถูกต้อง    |
 -------------------------------------
 
 ## ตัวอย่างโค้ด Example Code
 ```js
-const CHII_API_WALLET = require('wallet-chii')
+const { CHII_API_WALLET } = require('./index')
 const Link_VC = "https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 async function TOPUP_Wallet(code_vc) {
     try {
         const res = await CHII_API_WALLET(code_vc, 'เบอร์รับเงินวอเลท');
         if (res?.ok) {
             switch (res.ok) {
-                case 1001:
+                case 'success':
                     console.log(`ได้รับเงินจาก: ${res.name_owner}\nจำนวนเงิน: ${res.amount} บาท\nลิงค์อั่งเปา: ${res.code}`);
                     break;
                 default:
@@ -111,31 +111,31 @@ async function TOPUP_Wallet(code_vc) {
             }
         } else if (res?.errorData) {
             switch (res.errorData) {
-                case 1002:
+                case 1000:
                     console.log(res.mes_err);
                     // console.log('รับซองตัวเองไม่ได้');
                     break;
-                case 1003:
+                case 1001:
                     console.log(res.mes_err);
                      // console.log('ไม่พบเบอร์นี้ในระบบ');
                     break;
-                case 1004:
+                case 1002:
                     console.log(res.mes_err);
                     // console.log('ไม่พบซองนี้ในระบบ หรือ URL ผิด');
                     break;
-                case 1005:
+                case 1003:
                     console.log(res.mes_err);
                    // console.log('มีคนรับซองอั่งเปาไปแล้ว');
                     break;
-                case 1006:
+                case 1004:
                     console.log(res.mes_err); 
                   // console.log('ไม่พบซองอั่งเปาในระบบ');
                     break;
-                case 1007:
+                case 1005:
                     console.log(res.mes_err);
                   // console.log('ซองวอเลทนี้หมดอายุแล้ว');
                     break;
-                case 1008:
+                case 1006:
                     console.log(res.mes_err);
                     // console.log('เบอร์โทรศัพท์ผู้รับเงินไม่ถูกต้อง');
                     break;
@@ -160,14 +160,14 @@ TOPUP_Wallet(Link_VC);
 ```js
 const { EmbedBuilder } = require('discord.js');
 
-const CHII_API_WALLET = require('wallet-chii')
+const { CHII_API_WALLET } = require('./index')
 const Link = "https://gift.truemoney.com/campaign/?v=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 async function TOPUP_Wallet(code_vc) {
     try {
         const res = await CHII_API_WALLET(code_vc, 'เบอร์รับเงินวอเลท');
         if (res?.ok) {
             switch (res.ok) {
-                case 1001:
+                case 'success':
                     const embeds_res1 = new EmbedBuilder()
                         .setColor(0xFF9933)
                         .setTitle('รับเงินสำเร็จแล้ว\`\`✅\`\`')
@@ -183,49 +183,49 @@ async function TOPUP_Wallet(code_vc) {
             }
         } else if (res?.errorData) {
             switch (res.errorData) {
-                case 1002:
+                case 1000:
                     const embeds_res2 = new EmbedBuilder()
                         .setColor(0xFF0000)
                         .setTitle(`\`\`❌\`\` ${res.mes_err}`)
                     interaction.reply({ embeds: [embeds_res2], ephemeral: true });
                     // console.log(res.mes_err); // รับซองตัวเองไม่ได้ 
                     break;
-                case 1003:
+                case 1001:
                     const embeds_res3 = new EmbedBuilder()
                         .setColor(0xFF0000)
                         .setTitle(`\`\`❌\`\` ${res.mes_err}`)
                     interaction.reply({ embeds: [embeds_res3], ephemeral: true });
                     //  console.log(res.mes_err); // ไม่พบเบอร์นี้ในระบบ
                     break;
-                case 1004:
+                case 1002:
                     const embeds_res4 = new EmbedBuilder()
                         .setColor(0xFF0000)
                         .setTitle(`\`\`❌\`\` ${res.mes_err}`)
                     interaction.reply({ embeds: [embeds_res4], ephemeral: true });
                     //   console.log(res.mes_err); // ไม่พบซองนี้ในระบบ หรือ URL ผิด
                     break;
-                case 1005:
+                case 1003:
                     const embeds_res5 = new EmbedBuilder()
                         .setColor(0xFF0000)
                         .setTitle(`\`\`❌\`\` ${res.mes_err}`)
                     interaction.reply({ embeds: [embeds_res5], ephemeral: true });
                     //  console.log(res.mes_err); // มีคนรับซองอั่งเปาไปแล้ว
                     break;
-                case 1006:
+                case 1004:
                     const embeds_res6 = new EmbedBuilder()
                         .setColor(0xFF0000)
                         .setTitle(`\`\`❌\`\` ${res.mes_err}`)
                     interaction.reply({ embeds: [embeds_res6], ephemeral: true });
                     // console.log(res.mes_err); // ไม่พบซองอั่งเปาในระบบ
                     break;
-                case 1007:
+                case 1005:
                     const embeds_res7 = new EmbedBuilder()
                         .setColor(0xFF0000)
                         .setTitle(`\`\`❌\`\` ${res.mes_err}`)
                     interaction.reply({ embeds: [embeds_res7], ephemeral: true });
                     //  console.log(res.mes_err); // ซองวอเลทนี้หมดอายุแล้ว
                     break;
-                case 1008:
+                case 1006:
                     const embeds_res8 = new EmbedBuilder()
                         .setColor(0xFF0000)
                         .setTitle(`\`\`❌\`\` ${res.mes_err}`)
